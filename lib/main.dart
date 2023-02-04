@@ -77,9 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
             FortuneBar(
               selected: controller.stream,
               items: const [
-                FortuneItem(child: Text('Han Solo')),
-                FortuneItem(child: Text('Yoda')),
-                FortuneItem(child: Text('Obi-Wan Kenobi')),
+                FortuneItem(child: Text('1')),
+                FortuneItem(child: Text('2')),
+                FortuneItem(child: Text('3')),
+                FortuneItem(child: Text('4')),
+                FortuneItem(child: Text('5')),
+                FortuneItem(child: Text('6')),
+                FortuneItem(child: Text('7')),
+                FortuneItem(child: Text('8')),
+                FortuneItem(child: Text('9')),
+                FortuneItem(child: Text('10')),
+                FortuneItem(child: Text('11')),
+                FortuneItem(child: Text('12')),
+                FortuneItem(child: Text('13')),
+                FortuneItem(child: Text('14')),
+                FortuneItem(child: Text('15')),
+
               ],
             )
 
