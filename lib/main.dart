@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 void main() {
   runApp(const MyApp());
