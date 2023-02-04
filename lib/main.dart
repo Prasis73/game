@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-
+import 'package:infinite_listview/infinite_listview.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -51,55 +50,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  final InfiniteScrollController _infiniteController = InfiniteScrollController(
+    initialScrollOffset: 0.0,
+  );
   StreamController<int> controller = StreamController<int>();
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      body: Container(
+        // Leave margin here for top bar
+        color: Colors.grey[900],
+        padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 5.0),
+        child: (Column(mainAxisSize: MainAxisSize.min, children: [
+          Expanded(
+
+            child: InfiniteListView.builder(
+              // itemCount: 222,
+              scrollDirection: Axis.horizontal,
+              controller: _infiniteController,
+              anchor: 0.5,
+              itemBuilder: (BuildContext context, int index) {
+                return Material(
+                  child: InkWell(
+                    onTap: () {},
+                    child: SizedBox(
+                      width: 100,
+                      child: ListTile(
+                        title: Text('Item #$index'),
+                        subtitle: Text('Subtitle $index'),
+                        trailing: const Icon(Icons.chevron_right),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ])),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FortuneBar(
-              selected: controller.stream,
-              items: const [
-                FortuneItem(child: Text('1')),
-                FortuneItem(child: Text('2')),
-                FortuneItem(child: Text('3')),
-                FortuneItem(child: Text('4')),
-                FortuneItem(child: Text('5')),
-                FortuneItem(child: Text('6')),
-                FortuneItem(child: Text('7')),
-                FortuneItem(child: Text('8')),
-                FortuneItem(child: Text('9')),
-                FortuneItem(child: Text('10')),
-                FortuneItem(child: Text('11')),
-                FortuneItem(child: Text('12')),
-                FortuneItem(child: Text('13')),
-                FortuneItem(child: Text('14')),
-                FortuneItem(child: Text('15')),
-
-              ],
-            )
-
-          ],
-        ),
-      ),
-     // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
