@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-import 'package:roulette/roulette.dart';
 import 'arrow.dart';
 
 void main() {
@@ -31,7 +30,7 @@ class MyRoulette extends StatelessWidget {
     required this.controller,
   }) : super(key: key);
 
-  final RouletteController controller;
+  final StreamController controller;
 
 
 
@@ -80,8 +79,8 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
 
 
-  late RouletteController _controller;
-
+ // late RouletteController _controller;
+  StreamController<int> _controller = StreamController<int>();
   final colors = <Color>[
     Colors.red,
     Colors.grey,
@@ -94,18 +93,6 @@ class _HomePageState extends State<HomePage>
     Colors.white,
 
   ];
-
-  @override
-  void initState() {
-    // Initialize the controller
-    final group = RouletteGroup.uniform(
-      colors.length,
-      colorBuilder: colors.elementAt,
-      textBuilder: (index) => (index + 1).toString(),
-    );
-    _controller = RouletteController(vsync: this, group: group);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +121,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   void dispose() {
-    _controller.dispose();
+    //_controller.dispose();
     super.dispose();
   }
 }
