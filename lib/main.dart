@@ -1,9 +1,11 @@
+
 import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'arrow.dart';
+import 'fortuneStyle.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,16 +50,20 @@ class MyRoulette extends StatelessWidget {
             padding: const EdgeInsets.only(top: 30),
             child: FortuneBar(
               selected: controller.stream,
-              styleStrategy: const AlternatingStyleStrategy(),
-              items: const [
-                FortuneItem(child: Text('Han Solo'),
-            style: FortuneItemStyle(
+              // styleStrategy: const AlternatingStyleStrategy(),
+              items: [
+                FortuneItem(child: FortuneCustomStyle(text:"Han Solo",color:Colors.green),
+                //can pass text and background color here
+           /*  style: const FortuneItemStyle(
             color: Colors.red, // <-- custom circle slice fill color
             borderColor: Colors.green, // <-- custom circle slice stroke color
             borderWidth: 3, // <-- custom circle slice stroke width
-          ),),
-                FortuneItem(child: Text('Yoda')),
-                FortuneItem(child: Text('Obi-Wan Kenobi')),
+          ), */),
+                FortuneItem(child: FortuneCustomStyle(text:"Yoda",color:Colors.red),),
+                FortuneItem(child: FortuneCustomStyle(text:"Obi-Wan Kenobi",color:Colors.yellow),),
+
+              /*   FortuneItem(child: Text('Yoda')),
+                FortuneItem(child: Text('Obi-Wan Kenobi')), */
               ],
             )
           ),
