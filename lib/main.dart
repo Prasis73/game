@@ -56,7 +56,7 @@ class _MyRouletteState extends State<MyRoulette> {
     String prev = "";
   @override
   Widget build(BuildContext context) {
-    
+    //hits this function
 void hit(){
    Future.delayed(const Duration(milliseconds: 5000), () {
 
